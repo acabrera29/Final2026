@@ -409,12 +409,52 @@ likely to die from covid19 than women.</p>
 </div>
 <div id="inferential-results" class="section level2">
 <h2>Inferential results</h2>
-<pre class="r"><code>chisq.test(table(kData$sex, kData$result))</code></pre>
+<pre class="r"><code>chisq.test(table1)</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
-## data:  table(kData$sex, kData$result)
+## data:  table1
 ## X-squared = 10, df = 1, p-value = 0.001</code></pre>
+<pre class="r"><code>chisqtestGC(table1)</code></pre>
+<pre><code>## Pearson&#39;s Chi-squared test with Yates&#39; continuity correction 
+## 
+## Observed Counts:
+##        sex
+## result  female male
+##   alive   1831 1411
+##   dead      25   44
+## 
+## Counts Expected by Null:
+##        sex
+## result  female male
+##   alive   1817 1425
+##   dead      39   30
+## 
+## Contributions to the chi-square statistic:
+##        sex
+## result  female male
+##   alive   0.10 0.13
+##   dead    4.84 6.17
+## 
+## 
+## Chi-Square Statistic = 10 
+## Degrees of Freedom of the table = 1 
+## P-Value = 0.0012</code></pre>
+<pre class="r"><code>fisher.test(table1)</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table1
+## p-value = 9e-04
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  1.4 3.9
+## sample estimates:
+## odds ratio 
+##        2.3</code></pre>
+<p>The p value is 0.001, which is less than 0.05. This means we reject
+the null hypothesis and conclude that there is a connection between sex
+and death from covid19 in Korea,2019.</p>
 </div>
 </div>
 <div id="conclusions" class="section level1">
